@@ -1,0 +1,46 @@
+Mon Jul 13 13:40:30 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 572.97                 Driver Version: 572.97         CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5060 ...  WDDM  |   00000000:01:00.0  On |                  N/A |
+| N/A   56C    P4             18W /   54W |    2022MiB /   8151MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            3168    C+G   ...ntrolPanel\SystemSettings.exe      N/A      |
+|    0   N/A  N/A            6800    C+G   ...acted\runtime\WeChatAppEx.exe      N/A      |
+|    0   N/A  N/A            7736    C+G   ...lpaper_engine\wallpaper64.exe      N/A      |
+|    0   N/A  N/A           10740    C+G   C:\Windows\explorer.exe               N/A      |
+|    0   N/A  N/A           12072    C+G   ...onsoftware\RadeonSoftware.exe      N/A      |
+|    0   N/A  N/A           12080    C+G   C:\Windows\explorer.exe               N/A      |
+|    0   N/A  N/A           12180    C+G   ...indows\System32\ShellHost.exe      N/A      |
+|    0   N/A  N/A           12844    C+G   ...8bbwe\PhoneExperienceHost.exe      N/A      |
+|    0   N/A  N/A           13824    C+G   ...em32\ApplicationFrameHost.exe      N/A      |
+|    0   N/A  N/A           15180    C+G   ..._cw5n1h2txyewy\SearchHost.exe      N/A      |
+|    0   N/A  N/A           15204    C+G   ...y\StartMenuExperienceHost.exe      N/A      |
+|    0   N/A  N/A           17040    C+G   ...mba6cd70vzyy\ArmouryCrate.exe      N/A      |
+|    0   N/A  N/A           18068    C+G   ...App_cw5n1h2txyewy\LockApp.exe      N/A      |
+|    0   N/A  N/A           19196    C+G   ....0.4078.65\msedgewebview2.exe      N/A      |
+|    0   N/A  N/A           19724    C+G   ...t\Edge\Application\msedge.exe      N/A      |
+|    0   N/A  N/A           20348    C+G   ...5n1h2txyewy\TextInputHost.exe      N/A      |
+|    0   N/A  N/A           21488    C+G   ...xyewy\ShellExperienceHost.exe      N/A      |
+|    0   N/A  N/A           23176    C+G   ...ffice6\promecefpluginhost.exe      N/A      |
+|    0   N/A  N/A           23856    C+G   ...\cef.win64\steamwebhelper.exe      N/A      |
+|    0   N/A  N/A           25032    C+G   ...t\Edge\Application\msedge.exe      N/A      |
+|    0   N/A  N/A           25312    C+G   ...adeonsoftware\AMDRSSrcExt.exe      N/A      |
+|    0   N/A  N/A           25552    C+G   ...26wp6bftszj\TranslucentTB.exe      N/A      |
+|    0   N/A  N/A           26384    C+G   D:\sakuracat\SakuraCat.exe            N/A      |
+|    0   N/A  N/A           27636    C+G   ....0.4078.65\msedgewebview2.exe      N/A      |
+|    0   N/A  N/A           30204    C+G   ...yb3d8bbwe\WindowsTerminal.exe      N/A      |
+|    0   N/A  N/A           32116    C+G   C:\Windows\explorer.exe               N/A      |
+|    0   N/A  N/A           34560    C+G   ....2.1.1\jbr\bin\cef_server.exe      N/A      |
++-----------------------------------------------------------------------------------------+
