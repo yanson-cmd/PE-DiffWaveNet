@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import easydict
 import numpy as np
 
 import torch
@@ -15,7 +14,7 @@ class DiffSTG(nn.Module):
     """
     Masked Diffusion Model
     """
-    def __init__(self, config: easydict):
+    def __init__(self, config):
         super().__init__()
         self.config = config
 

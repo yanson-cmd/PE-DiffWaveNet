@@ -3,12 +3,12 @@ import pandas as pd
 from scipy.spatial.distance import cdist
 import os
 
-# ========== 修改这里的路径 ==========
-BASE_DIR = r"D:/diffSTG/臭氧预测资料"               # 实习资料根目录
+# ========== 可通过环境变量覆盖的路径 ==========
+BASE_DIR = os.environ.get("AIR_BASE_DIR", "/home/lyk/O3")
 MATRIX_DIR = os.path.join(BASE_DIR, "matrix_N95")
-STATION_FILE = os.path.join(BASE_DIR, "xlsx_N95/station_loc1.xlsx")
-OUTPUT_DIR = "./data/dataset/AIR_N95"              # DiffSTG 数据存放位置
-# ===================================
+STATION_FILE = os.path.join(BASE_DIR, "xlsx_N95", "station_loc1.xlsx")
+OUTPUT_DIR = os.environ.get("AIR_OUTPUT_DIR", "./data/dataset/AIR_N95")
+# ============================================
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

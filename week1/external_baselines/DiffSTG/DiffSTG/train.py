@@ -5,9 +5,46 @@ import argparse
 import numpy as np
 import torch.utils.data
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # 禁用所有 GPU
-from easydict import EasyDict as edict
+if os.environ.get('DIFFSTG_FORCE_CPU', '0') == '1':
+    os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 from timeit import default_timer as timer
+
+try:
+    from easydict import EasyDict as edict
+except ImportError:
+    class edict(dict):
+        def __getattr__(self, item):
+            try:
+                return self[item]
+            except KeyError as exc:
+                raise AttributeError(item) from exc
+
+        def __setattr__(self, key, value):
+            self[key] = value
+
+        def __delattr__(self, item):
+            try:
+                del self[item]
+            except KeyError as exc:
+                raise AttributeError(item) from exc
+
+try:
+    import nni
+except ImportError:
+    class _DummyNNI:
+        @staticmethod
+        def report_intermediate_result(*args, **kwargs):
+            return None
+
+        @staticmethod
+        def report_final_result(*args, **kwargs):
+            return None
+
+        @staticmethod
+        def get_next_parameter():
+            return {}
+
+    nni = _DummyNNI()
 
 from utils.eval import Metric
 from utils.gpu_dispatch import GPU
@@ -34,6 +71,17 @@ try:
 except:
     pass
 
+
+def str2bool(value):
+    if isinstance(value, bool):
+        return value
+    value = str(value).strip().lower()
+    if value in {'1', 'true', 't', 'yes', 'y'}:
+        return True
+    if value in {'0', 'false', 'f', 'no', 'n'}:
+        return False
+    raise argparse.ArgumentTypeError(f"Invalid boolean value: {value}")
+
 def get_params():
     parser = argparse.ArgumentParser(description='Entry point of the code')
 
@@ -52,10 +100,10 @@ def get_params():
     parser.add_argument('--n_samples', type=int, default=8)
 
     # train
-    parser.add_argument("--is_train", type=bool, default=True) # train or evaluate
+    parser.add_argument("--is_train", type=str2bool, default=True) # train or evaluate
     parser.add_argument("--data", type=str, default='PEMS08')
     parser.add_argument("--mask_ratio", type=float, default=0.0) # mask of history data
-    parser.add_argument("--is_test", type=bool, default=True)
+    parser.add_argument("--is_test", type=str2bool, default=False)
     parser.add_argument("--nni", type=bool, default=False)
     parser.add_argument("--lr", type=float, default=0.002)
     parser.add_argument("--batch_size", type=int, default=8)
@@ -486,8 +534,6 @@ def main(params: dict):
 # PEMS08	UGnet	200	    UGnet	            32	        12	        12	        ddpm
 
 if __name__ == '__main__':
-
-    import nni
     import logging
 
     logger = logging.getLogger('training')

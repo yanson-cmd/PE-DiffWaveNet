@@ -1,0 +1,37 @@
+Captured canonical Val/Test metrics from DiffSTG retraining log
+Date: 2026-07-20
+
+Source log: diffstg_air_n95_seq24_pre6_s42.log (remote)
+
+Run status: completed
+
+First valid Val metrics observed:
+Epoch 1.0
+ - Train Loss: 1.983
+ - Val Future: MAE 39.13, RMSE 47.82
+ - Val History: MAE 19.92, RMSE 21.20
+
+Best later validation snapshot visible in pasted log:
+Epoch 18.0
+ - Val Future: MAE 30.65, RMSE 40.63
+ - Val History: MAE 1.30, RMSE 1.49
+
+Final test metrics from completed server run:
+ - Test MAE: 18.91
+ - Test RMSE: 23.02
+ - Test MAPE: 301.57%
+ - Sampling: ddim_multi
+ - Sample steps: 40
+ - Best model path: /home/lyk/O3/external_baselines/DiffSTG/DiffSTG/output/model/UGnet+32+200+quad+0.1+40+ddim_multi+24+6+8+True+AIR_N95+0.0+False+False+0.002+4N-200+T_h-24+T_p-6+epsilon_theta-UGnet.dm4stg
+
+Key log excerpt:
+Num_of_parameters:911047
+|---Train--- |---Val Future-- -|-----Val History----|
+Epoch | Loss  Time | MAE     RMSE    |  MAE    RMSE   Time|
+   1.0| 1.983 41.8s |[39.13  47.82  ] | 19.92  21.20  27.19s
+   5.0| 0.744 37.6s | 30.93  41.26   | 3.82   4.57   27.01s
+  11.0| 0.793 41.3s | 32.10  41.66   | 7.68   8.54   27.01s
+  15.0| 0.421 41.9s | 31.13  41.14   | 2.29   2.52   26.99s
+  18.0| 0.403 39.5s | 30.65  40.63   | 1.30   1.49   27.04s
+best model loaded from: << /home/lyk/O3/external_baselines/DiffSTG/DiffSTG/output/model/UGnet+32+200+quad+0.1+40+ddim_multi+24+6+8+True+AIR_N95+0.0+False+False+0.002+4N-200+T_h-24+T_p-6+epsilon_theta-UGnet.dm4stg
+sample_strategy:ddim_multi, sample_steps:40 Final results in test: MAE=18.91, RMSE=23.02, MAPE=301.57%

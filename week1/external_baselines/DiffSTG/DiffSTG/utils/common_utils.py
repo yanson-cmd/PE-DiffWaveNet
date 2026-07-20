@@ -43,7 +43,10 @@ def dict_merge(dict_list = []):
     return dict_
 
 def unfold_dict(in_dict):
-    from easydict import EasyDict as edict
+    try:
+        from easydict import EasyDict as edict
+    except ImportError:
+        edict = tuple()
     # convert 2 level easydict to 1 level, mainly for record the results.
     out_dict = {}
     for k1, v1 in in_dict.items():
