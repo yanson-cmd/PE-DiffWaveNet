@@ -15,6 +15,7 @@
 repository1/
   README.md
   week1/
+    Baseline复现/              # baseline 汇总 CSV
     DiffSTG Baseline/          # baseline 说明文档
     external_baselines/        # DiffSTG 代码、副产物、日志、模型、forecast
     smoke_test/                # CPU smoke test 输出
@@ -24,7 +25,6 @@ repository1/
     多seed/                     # seed=52,62 等多 seed 结果
     步长/                       # pre_len=1,3,12,24 等步长实验结果
     输出窗口/                   # seq_len 对比实验材料
-    Baseline复现/              # baseline 汇总 CSV
     metrics/                   # DiffSTG 等指标汇总
     pre_len_vs_metrics.csv     # 不同步长汇总指标
   week3/
