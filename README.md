@@ -6,6 +6,7 @@
 
 - DiffSTG baseline 跑通与结果归档；
 - PE-DiffWaveNet 主实验、消融实验、多 seed 实验；
+- 不同输入窗口（`seq_len`）实验；
 - 不同预测步长（`pre_len`）实验；
 - 面向论文/汇报的表格与图像整理。
 
@@ -55,7 +56,6 @@ repository1/
 - RMSE = `23.02`
 - MAPE = `301.57`
 
-说明：DiffSTG 的最终汇总指标已经写入比较表，但逐步预测文件没有完整同步到本地，因此 `Peak_RMSE`、`Step6_RMSE` 等字段尚未补全。
 
 ### 2. PE-DiffWaveNet 主实验
 
@@ -139,6 +139,32 @@ repository1/
 
 整体上，预测跨度增大后误差上升，符合时序预测常见规律。
 
+### 6. 输出窗口实验
+
+本组还做了固定 `pre_len=6`、`seed=42` 条件下的输入窗口长度对比实验，用于观察不同历史窗口长度对预测结果的影响。
+
+已归档的实验包括：
+
+- `seq_len=12`：`week2/输出窗口/matrix_N95_PEDiffWaveNet_noleak_yourgroup_seq12_pre6_s42/`
+- `seq_len=48`：`week2/输出窗口/matrix_N95_PEDiffWaveNet_noleak_yourgroup_seq48_pre6_s42/`
+
+对应日志文件：
+
+- `week2/输出窗口/seq12_pre6_s42.log`
+- `week2/输出窗口/seq48_pre6_s42.log`
+
+测试集结果为：
+
+- `seq_len=12`：RMSE `11.7120`，MAE `8.5413`，MAPE `36.5034`
+- `seq_len=24`：RMSE `11.1815`，MAE `7.7991`，MAPE `31.1616`
+- `seq_len=48`：RMSE `11.1807`，MAE `7.9360`，MAPE `31.8739`
+
+当前可以得到的结论是：
+
+- `seq_len=12` 明显弱于 `seq_len=24`，说明历史窗口过短会损失有效时序信息；
+- `seq_len=48` 与 `seq_len=24` 的 RMSE 基本持平，但 MAE 略高，没有表现出明显优势；
+- 在当前数据和训练设置下，`seq_len=24` 仍然是较稳妥的默认选择。
+
 ## week3 图表材料
 
 `week3/` 中已经整理出可直接用于答辩或报告的图表材料。
@@ -167,7 +193,10 @@ repository1/
 - 高值区误差高于全样本误差，峰值预测仍是难点；
 - 高 PpE 分层节点误差更高，说明复杂站点更难预测；
 - 步长增大后误差总体上升；
+- 输出窗口实验表明 `seq_len=24` 与 `seq_len=48` 接近，但优于 `seq_len=12`；
 - 主模型已经具备形成主表、消融表、站点图和典型预测曲线的完整材料。
+
+
 
 ## 快速查看建议
 
@@ -179,18 +208,4 @@ repository1/
 4. `week3/figures/station_error_distribution.png`
 5. `week3/figures/true_vs_predicted_curves.png`
 
-## 组内结果汇总建议
 
-当前仓库已经足以支撑组内汇报或提交初稿，建议最终统一提交时至少包含：
-
-- 本 README；
-- `week2` 中各实验输出目录；
-- `week3` 中整理后的图表；
-- `臭氧预测资料/臭氧预测资料/templates/experiment_result_template.csv` 中对应的实验结果表；
-- 对 DiffSTG baseline 的结果说明，尤其是 MAPE 偏高与逐步指标未补齐的原因说明。
-
-## 备注
-
-- 本仓库是“结果整理仓库”，不是原始数据或训练代码总仓。
-- 原始课程材料、数据和统一模板位于 `臭氧预测资料/臭氧预测资料/`。
-- 若后续补齐 DiffSTG 的本地 forecast 文件，应同步更新主对比表中的 baseline 分步指标。

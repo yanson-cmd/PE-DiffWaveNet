@@ -1,0 +1,72 @@
+2026-07-14 实验记录
+
+【环境信息】
+- 服务器：GS
+- 操作系统：Linux Ubuntu
+- Conda环境：pytorch
+- Python：3.10.20
+- PyTorch：2.13.0+cu130
+- CUDA：13.0
+- GPU：NVIDIA GeForce RTX 5080 × 2（各16GB显存）
+
+
+
+【实验1】输入窗口12（seq_len=12）
+
+【运行命令】
+nohup bash -c 'DEVICE=cuda EPOCHS=120 EXP_NAME=yourgroup_seq12_pre6_s42 bash scripts/run_train_pediffwavenet.sh 6 12 42' > seq12_pre6_s42.log 2>&1 &
+
+【关键配置】
+- seq_len: 12, pre_len: 6, seed: 42
+- device: cuda, epochs: 120（早停）
+- batch_size: 16
+- use_diffusion: 1, use_pe_graph: 1, use_pe_film: 1
+
+【运行结果】成功
+- Best Epoch: 28
+- Best Val RMSE: 13.53
+- Test RMSE: 11.71
+- Test MAE: 8.54
+- Test MAPE: 36.50%
+
+【分步误差】
+1h: RMSE 7.48, MAE 5.65
+2h: RMSE 9.71, MAE 7.25
+3h: RMSE 11.08, MAE 8.23
+4h: RMSE 12.43, MAE 9.23
+5h: RMSE 13.50, MAE 10.04
+6h: RMSE 14.61, MAE 10.85
+
+【输出位置】
+/home/lyk/O3/matrix_N95_PEDiffWaveNet_noleak_yourgroup_seq12_pre6_s42
+
+
+
+【实验2】输入窗口48（seq_len=48, seed=42）
+
+【运行命令】
+nohup bash -c 'DEVICE=cuda EPOCHS=120 EXP_NAME=yourgroup_seq48_pre6_s42 bash scripts/run_train_pediffwavenet.sh 6 48 42' > seq48_pre6_s42.log 2>&1 &
+
+【关键配置】
+- seq_len: 48, pre_len: 6, seed: 42
+- device: cuda, epochs: 120（早停）
+- batch_size: 16
+- use_diffusion: 1, use_pe_graph: 1, use_pe_film: 1
+
+【运行结果】成功
+- Best Epoch: 32
+- Best Val RMSE: 12.36
+- Test RMSE: 11.18
+- Test MAE: 7.94
+- Test MAPE: 31.87%
+
+【分步误差】
+1h: RMSE 6.81, MAE 4.88
+2h: RMSE 9.43, MAE 6.75
+3h: RMSE 11.08, MAE 8.07
+4h: RMSE 12.11, MAE 8.80
+5h: RMSE 12.78, MAE 9.26
+6h: RMSE 13.49, MAE 9.86
+
+【输出位置】
+/home/lyk/O3/matrix_N95_PEDiffWaveNet_noleak_yourgroup_seq48_pre6_s42
