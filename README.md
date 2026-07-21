@@ -16,8 +16,6 @@
 repository1/
   README.md
   week1/
-    Baseline复现/              # baseline 汇总 CSV
-    DiffSTG Baseline/          # baseline 说明文档
     external_baselines/        # DiffSTG 代码、副产物、日志、模型、forecast
     smoke_test/                # CPU smoke test 输出
     数据说明/                   # 第1周数据理解与补充材料
